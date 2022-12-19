@@ -17,14 +17,12 @@ public class UserDefaultTest {
     private UserClient userClient;
     String token;
 
-
     @SneakyThrows
     @Before
     public void setUp() {
         TimeUnit.SECONDS.sleep(3);
         userClient = new UserClient();
         user = UserGenerator.generateDefaultUser();
-
     }
 
     @After
@@ -52,9 +50,7 @@ public class UserDefaultTest {
         token = responseCreate.extract().path("accessToken").toString().substring(7);
         String isUserNotCreated = responseCreateTwice.extract().path("message");
         int statusCode = responseCreateTwice.extract().statusCode();
-
         assertEquals("User is created ", "User already exists", isUserNotCreated);
         assertEquals("User created status code is corrected", SC_FORBIDDEN, statusCode);
     }
-
 }

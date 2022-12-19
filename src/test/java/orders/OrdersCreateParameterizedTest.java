@@ -20,12 +20,10 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class OrdersCreateParameterizedTest {
-
     private User user;
     private UserClient userClient;
     private OrdersClient ordersClient;
     private Order order;
-
     boolean isOrderCreated;
     int statusCode;
     String token;
@@ -37,7 +35,6 @@ public class OrdersCreateParameterizedTest {
         userClient = new UserClient();
         user = UserGenerator.generateDefaultUser();
         ordersClient = new OrdersClient();
-
     }
 
     @After
@@ -69,9 +66,7 @@ public class OrdersCreateParameterizedTest {
         ValidatableResponse responseCreateOrder = ordersClient.createOrderWithToken(order, token);
         boolean isOrderCreated = responseCreateOrder.extract().path("success");
         int statusCode = responseCreateOrder.extract().statusCode();
-
         assertEquals("Order created is not ok", true, isOrderCreated);
         assertEquals("Order created status code uncorrected", SC_OK, statusCode);
     }
-
 }

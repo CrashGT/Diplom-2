@@ -5,9 +5,7 @@ import io.qameta.allure.Step;
 
 import java.util.Locale;
 
-
 public class UserGenerator {
-
     private static Faker faker = new Faker(new Locale("en"));
 
     @Step("Create new default user")

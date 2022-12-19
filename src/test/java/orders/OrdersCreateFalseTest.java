@@ -19,12 +19,10 @@ import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
 
 public class OrdersCreateFalseTest {
-
     private User user;
     private UserClient userClient;
     private OrdersClient ordersClient;
     private Order order;
-
     String token;
 
     @SneakyThrows
@@ -50,7 +48,6 @@ public class OrdersCreateFalseTest {
         ValidatableResponse responseCreateOrder = ordersClient.createOrderWithoutToken(order);
         boolean isOrderCreated = responseCreateOrder.extract().path("success");
         int statusCode = responseCreateOrder.extract().statusCode();
-
         assertEquals("Order created is not ok", true, isOrderCreated);
         assertEquals("Order created status code uncorrected", SC_OK, statusCode);
     }
@@ -63,7 +60,6 @@ public class OrdersCreateFalseTest {
         boolean isOrderCreated = responseCreateOrder.extract().path("success");
         int statusCode = responseCreateOrder.extract().statusCode();
         String actualMessage = responseCreateOrder.extract().path("message");
-
         assertEquals("Order created is not ok", false, isOrderCreated);
         assertEquals("Order created status code uncorrected", SC_BAD_REQUEST, statusCode);
         assertEquals("Order massage uncorrected", "Ingredient ids must be provided", actualMessage);
@@ -75,7 +71,6 @@ public class OrdersCreateFalseTest {
         order = IngredientGenerator.generateFalseIngredient();
         ValidatableResponse responseCreateOrder = ordersClient.createOrderWithToken(order, token);
         int statusCode = responseCreateOrder.extract().statusCode();
-
         assertEquals("Order created status code uncorrected", SC_INTERNAL_SERVER_ERROR, statusCode);
     }
 }

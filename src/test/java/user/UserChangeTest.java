@@ -15,12 +15,10 @@ public class UserChangeTest {
     private UserClient userClient;
     private String token;
 
-
     @Before
     public void setUp() {
         userClient = new UserClient();
         user = UserGenerator.generateDefaultUser();
-
     }
 
     @After
@@ -36,7 +34,6 @@ public class UserChangeTest {
         ValidatableResponse responseChange = userClient.changeUserWithToken(user, token);
         boolean isUserCreated = responseChange.extract().path("success");
         int statusCode = responseChange.extract().statusCode();
-
         assertTrue("User changed is not ok", isUserCreated);
         assertEquals("User changed status code uncorrected", SC_OK, statusCode);
     }
@@ -50,10 +47,8 @@ public class UserChangeTest {
         boolean isUserChanged = responseChange.extract().path("success");
         int statusCode = responseChange.extract().statusCode();
         String actualMassage = responseChange.extract().path("message");
-
         assertFalse("User changed is ok", isUserChanged);
         assertEquals("User changed status code uncorrected", SC_UNAUTHORIZED, statusCode);
         assertEquals("User is change", "You should be authorised", actualMassage);
     }
-
 }

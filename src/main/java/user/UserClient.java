@@ -10,7 +10,6 @@ import io.restassured.response.ValidatableResponse;
 import static io.restassured.RestAssured.given;
 
 public class UserClient extends Client {
-
     private static final String PATH_CREATE = "/api/auth/register";
     private static final String PATH_LOGIN = "/api/auth/login";
     private static final String PATH_CHANGE = "/api/auth/user";
@@ -66,7 +65,6 @@ public class UserClient extends Client {
                 .patch(PATH_CHANGE)
                 .then();
     }
-
 
     @Step("Delete user")
     public ValidatableResponse deleteUser(String token) {

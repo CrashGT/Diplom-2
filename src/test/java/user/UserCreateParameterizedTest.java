@@ -12,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class UserCreateParameterizedTest {
-
     private User user;
     private UserClient userClient;
     private int statusCode;
@@ -43,7 +42,6 @@ public class UserCreateParameterizedTest {
         ValidatableResponse responseCreate = userClient.createUser(user);
         String actualMessage = responseCreate.extract().path("message");
         int actualStatusCode = responseCreate.extract().statusCode();
-
         assertEquals("Status code is not 40*", statusCode, actualStatusCode);
         assertEquals("Error massage uncorrected", massage, actualMessage);
     }

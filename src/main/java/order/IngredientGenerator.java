@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class IngredientGenerator {
 
-
     @Step("Create new order with bun")
     public static Order generateBun() {
         String[] ingredients = new String[]{
@@ -45,5 +44,4 @@ public class IngredientGenerator {
         String ingredients = "888888888888888888888";
         return new Order(ingredients);
     }
-
 }

@@ -21,7 +21,6 @@ public class OrdersShowListTest {
     private UserClient userClient;
     private OrdersClient ordersClient;
     private Order order;
-
     String token;
 
     @Before
@@ -46,7 +45,6 @@ public class OrdersShowListTest {
         ValidatableResponse responseShowOrders = ordersClient.getOrdersUserWithToken(order, token);
         boolean isOrderCreated = responseShowOrders.extract().path("success");
         int statusCode = responseShowOrders.extract().statusCode();
-
         assertEquals("Order show is not ok", true, isOrderCreated);
         assertEquals("Order show status code uncorrected", SC_OK, statusCode);
     }
@@ -58,10 +56,8 @@ public class OrdersShowListTest {
         boolean isOrderCreated = responseShowOrders.extract().path("success");
         int statusCode = responseShowOrders.extract().statusCode();
         String actualMessage = responseShowOrders.extract().path("message");
-
         assertEquals("Order created is not ok", false, isOrderCreated);
         assertEquals("Order created status code uncorrected", SC_UNAUTHORIZED, statusCode);
         assertEquals("Order show massage uncorrected", "You should be authorised", actualMessage);
-
     }
 }

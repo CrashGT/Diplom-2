@@ -11,10 +11,7 @@ import user.User;
 import static io.restassured.RestAssured.given;
 
 public class OrdersClient extends Client {
-
     private static final String PATH_ORDER = "/api/orders";
-
-
     private final io.restassured.filter.Filter requestFilter = new RequestLoggingFilter();
     private final Filter responseFiler = new ResponseLoggingFilter();
 
